@@ -1,0 +1,36 @@
+{
+  "name": "react-mig",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "push": "cross-env NODE_ENV=test node testProcessor-obfuscated.js",
+    "format": "prettier --single-quote --bracket-spacing=false --write 'src/**/*.js'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "gitDir": "../",
+    "*.js": [
+      "prettier --write --single-quote --bracket-spacing=false",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1",
+    "husky": "^0.14.3",
+    "javascript-obfuscator": "^0.12.2",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.8.1"
+  }
+}
