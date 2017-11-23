@@ -33,6 +33,26 @@ it('should be able to change the selected category', () => {
   expect(wrapper.find('li > a.selected').text()).toEqual(wrapper.find('li > a').at(1).text());
 });
 
+it('should filter with the input', () => {
+  const wrapper = mount(<App />);
+  wrapper.find('input').simulate('change', {target: {value: 'an'}});
+  expect(wrapper.find('section.gallery li').length).toEqual(3);
+});
+
+it('should filter with input and category', () => {
+  const wrapper = mount(<App />);
+  wrapper.find('input').simulate('change', {target: {value: 'an'}});
+  wrapper.find('li > a').at(2).simulate('click');
+  expect(wrapper.find('section.gallery li').length).toEqual(2);
+});
+
+it('should filter with category then input', () => {
+  const wrapper = mount(<App />);
+  wrapper.find('li > a').at(2).simulate('click');
+  wrapper.find('input').simulate('change', {target: {value: 'an'}});
+  expect(wrapper.find('section.gallery li').length).toEqual(2);
+});
+
 it('should have a lot of components', (done) => {
   expect.assertions(1);
   fs.readdir(__dirname + '/components', (_, data) => {
